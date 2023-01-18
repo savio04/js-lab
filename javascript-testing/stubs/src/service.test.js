@@ -15,7 +15,7 @@ const mocks = {
   //   console.log(JSON.stringify(withoutStub));
   // }
 
-  //stub tem o objetivo de substituir o resultado de uma função que geralment faz uma request para a internet
+  //stub tem o objetivo de substituir o resultado de uma função que geralmente faz uma request para a internet
   const service = new Service();
   const stub = sinon.stub(service, service.makeRequest.name);
 
