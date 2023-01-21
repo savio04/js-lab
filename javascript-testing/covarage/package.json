@@ -1,0 +1,16 @@
+{
+  "name": "covarage",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "scripts": {
+    "test": "npx mocha -w --parallel *.test.js",
+    "test:cov": "npx nyc npx mocha --parallel *.test.js"
+  },
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "^10.2.0",
+    "nyc": "^15.1.0",
+    "supertest": "^6.3.3"
+  }
+}

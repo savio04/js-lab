@@ -1,0 +1,10 @@
+{
+  "checkCovorage": true,
+  "branch": 100,
+  "lines": 80,
+  "functions": 100,
+  "reporter": [
+    "html",
+    "text"
+  ]
+}
