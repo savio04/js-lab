@@ -8,24 +8,19 @@ const routes = {
     return response.end();
   },
   "/login:post": async (request, response) => {
-    response.write("Login!");
-    let chunks = [];
+    for await (const user of request) {
+      const body = JSON.parse(user)
 
-    for await (const chunk of request) {
-      chunks.push(chunk);
+      if (DEFAULT_USER.username !== body.username || DEFAULT_USER.password !== body.password) {
+        response.writeHead(401, { "Contente-type": "text/plain" })
+        response.write("Login failed")
+        return response.end();
+      }
+
+      response.writeHead(200)
+      response.write("Login as success")
+      return response.end()
     }
-
-    const body = JSON.parse(Buffer.concat(chunks).toString());
-
-    if(DEFAULT_USER.username !== body.username || DEFAULT_USER.password !== body.password) {
-      response.writeHead(401)
-      
-      return response.end();
-    }
-
-    response.write("Login as success")
-    response.writeHead(200)
-    return response.end()
   },
   default: (request, response) => {
     response.writeHead(404, { "Contente-type": "text/plain" });

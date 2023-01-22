@@ -30,8 +30,20 @@ describe("Api suite test", () => {
         })
         .expect(200);
 
-      console.log(response.text)
       assert.deepStrictEqual(response.text, "Login as success");
+    });
+
+    it("should unathorized a request and return HTTP status 401", async () => {
+      const response = await request(server)
+        .post("/login")
+        .send({
+          username: "Marcos",
+          password: 123,
+        })
+        .expect(401);
+
+      assert.ok(response.unauthorized)
+      assert.deepStrictEqual(response.text, "Login failed");
     });
   });
 });
