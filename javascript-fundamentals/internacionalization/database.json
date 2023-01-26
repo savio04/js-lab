@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "vehicles": ["Moto", "Carro", "Avião"],
+    "kmTravled": 10000,
+    "from": "2001-01-01",
+    "to": "2022-02-01"
+  }
+]
