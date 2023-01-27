@@ -1,9 +1,10 @@
 import database from "../database.json" assert { type: "json" };
 import Person from "./person.js";
+import { save } from "./repository.js";
 import TerminalController from "./terminalController.js";
 
 const DEFAULT_LANG = "pt-BR";
-const STOP_TERMINAL = "exit"
+const STOP_TERMINAL = "exit";
 
 const terminal = new TerminalController();
 
@@ -11,23 +12,24 @@ terminal.initialzedTerminal(database, DEFAULT_LANG);
 
 async function mainLoop() {
   try {
-    const answer = await terminal.question()
+    const answer = await terminal.question();
 
-    if(answer === STOP_TERMINAL) {
-      terminal.closeTerminal()
-      console.log("exit")
+    if (answer === STOP_TERMINAL) {
+      terminal.closeTerminal();
+      console.log("exit terminal");
 
       return;
     }
 
-    const newData = Person.generateInstanceFromString(answer).formatedd(DEFAULT_LANG)
+    const person = Person.generateInstanceFromString(answer);
+    terminal.updateTable(person.formatedd(DEFAULT_LANG));
 
-    terminal.updateTable(newData)
-    await mainLoop()
+    await save(person)
+    return mainLoop();
   } catch (error) {
-    console.error(error)
-    await mainLoop()
+    console.error(error);
+    return mainLoop();
   }
 }
 
-await mainLoop()
+await mainLoop();

@@ -17,7 +17,7 @@ export default class Person {
       kmTravled: new Intl.NumberFormat(lenguage, {
         style: "unit",
         unit: "kilometer",
-      }).format(this.kmTravled),
+      }).format(Number(this.kmTravled)),
       from: new Intl.DateTimeFormat(lenguage, {
         month: "long",
         day: "2-digit",
@@ -53,4 +53,4 @@ export default class Person {
   }
 }
 
-//1 Carro,Navio 400000 2001-06-04 2002-04-05
+//1 Carro 400000 2001-06-04 2002-04-05

@@ -16,7 +16,7 @@ export default class TerminalController {
 
     this.terminal = readline.createInterface({
       input: process.stdin,
-      output: process.stdout,
+      output: process.stdout
     });
     
     this.initializedTable(database, lenguage)
@@ -35,13 +35,7 @@ export default class TerminalController {
   }
 
   updateTable(info) {
-    this.data.push({
-      id: 1,
-      vehicles: 'Carro e Navio',
-      kmTravled: '400.000 km',
-      from: '04 de junho de 2001',
-      to: '05 de abril de 2002'
-    })
+    this.data.push(info)
 
     const newTable = chalkTable(this.getTableOption(), this.data)
     this.print(newTable)
