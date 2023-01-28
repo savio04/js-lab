@@ -24,7 +24,7 @@ async function mainLoop() {
     const person = Person.generateInstanceFromString(answer);
     terminal.updateTable(person.formatedd(DEFAULT_LANG));
 
-    await save(person)
+    save(person)
     return mainLoop();
   } catch (error) {
     console.error(error);

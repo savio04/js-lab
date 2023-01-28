@@ -1,21 +1,19 @@
-import { readFile, writeFile } from "fs/promises"
+import { readFileSync, writeFileSync } from "fs"
 
-export async function save(data) {
+export function save(data) {
   const { pathname } = new URL("./../database.json", import.meta.url)
 
   try {
-    const file = await readFile(pathname)
-    // let items = JSON.parse(file)
+    const file = readFileSync(pathname)
+    let items = JSON.parse(file)
 
-    // if(items.length) {
-    //   items.push(data)
-    // } else {
-    //   items = [data]
-    // }
+    if(items.length) {
+      items.push(data)
+    } else {
+      items = [data]
+    }
   
-    // console.log(JSON.stringify(items))
-    console.log(file)
-    await writeFile(pathname, JSON.stringify(JSON.parse(file)))
+    writeFileSync(pathname, JSON.stringify(items))
   }catch(error) {
     console.log(error)
   }
