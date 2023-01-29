@@ -41,3 +41,22 @@ async function *systemInfo() {
 for await (const promise of systemInfo()) {
   console.log(promise)
 }
+
+
+//
+const objectInteable = {
+  full_name: "Jose",
+  last_name: "Maria",
+  age: 45,
+  *[Symbol.iterator]() {
+    for(const key in this) {
+      yield this[key]
+    }
+  }
+}
+
+for(const obj of objectInteable) {
+  console.log(obj)
+}
+
+//Saber mais sobre iterators: https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Iteration_protocols
