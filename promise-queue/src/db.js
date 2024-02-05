@@ -1,8 +1,8 @@
 import pg from "pg"
 
 export const db = new pg.Pool({
-  user: "root",
-  password: "01075783",
+  user: "your_user",
+  password: "your_password",
   max: 10,
   database: "test"
 })
