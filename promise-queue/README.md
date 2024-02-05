@@ -25,5 +25,5 @@ $ sudo docker run -p 5432:5432 \
 
 # Run the application
 # After you have filled in the database credentials in the db.js file
-$ npm run dev
+$ node src/server.js
 ```
