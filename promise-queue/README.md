@@ -15,9 +15,15 @@ $ cd js-lab/promise-queue
 # Install dependencies
 $ npm install
 
-# Run docker command to create the container with the database [Optional if you have Postgres installed locally]
-$ sudo docker run -p 5432:5432 --name db-pg -e POSTGRES_PASSWORD=your_password -e POSTGRES_USER=your_user -d postgres
+# Run docker command to create the container with the database
+# Optional if you have Postgres installed locally
+$ sudo docker run -p 5432:5432 \
+    --name db-pg \
+    -e POSTGRES_PASSWORD=your_password \
+    -e POSTGRES_USER=your_user \
+    -d postgres
 
-# Run the application [After you have filled in the database credentials in the db.js file]
+# Run the application
+# After you have filled in the database credentials in the db.js file
 $ npm run dev
 ```
